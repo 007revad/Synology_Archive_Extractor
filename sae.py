@@ -3,6 +3,7 @@
 import ctypes
 from enum import IntFlag
 import argparse
+import os
 
 _libcodesign = ctypes.CDLL("libsynocodesign.so")
 
@@ -39,19 +40,44 @@ class SynoArchiveFlags(IntFlag):
 
 
 class SynoArchiveKeytype(IntFlag):
-    SYSTEM= 0, # System
-    NANO= 1, # Nano
-    JSON= 2, # SecurityJson
-    SPK= 3, # Spk
-    UNK4= 4, # ?
+    SYSTEM= 0, # DSM
+    NANO= 1, # NANO
+    JSON= 2, # NANO_META
+    SPK= 3, # PKG
+    SYNOMIBCOLLECTOR= 4, # SYNOMIBCOLLECTOR
     SSDB= 5, # SECURITYSCAN_DB
-    UNK6= 6, # ?
-    UNK7= 7, # ?
-    DEV= 8, # /var/packages/syno_dev_token
-    WEDJAT= 9, # Wedjat
-    UNK10= 10, # ?
-    SMALL= 11 # Small Patch
+    AUTOUPDATE= 6, # AUTOUPDATE
+    FIRMWARE= 7, # FIRMWARE
+    DEV= 8, # PKG_DEV_TOKEN (/var/packages/syno_dev_token)
+    WEDJAT= 9, # SYNOPROTECTION (Wedjat)
+    DSM_SUPPORT_PATCH= 10, # DSM_SUPPORT_PATCH
+    SMALL= 11 # JUNIOR_EXPANSION_PACK_PATCH (Small Patch)
 
+class SynoArchiveErrortype(IntFlag):
+    OK = 0,
+    ERR_OPEN_ARCHIVE_FAILED = 1,
+    ERR_READ_VERSION = 2,
+    ERR_READ_HEADER_LEN = 3,
+    ERR_READ_HEADER = 4,
+    ERR_SODIUM_INIT_FAILED = 5,
+    ERR_INVALID_FORMAT = 6,
+    ERR_INVALID_VERSION = 7,
+    ERR_INVALID_HEADER = 8,
+    ERR_INVALID_HEADER_MSGUNPACK = 9,
+    ERR_INVALID_HEADER_OBJECT_TYPE = 10,
+    ERR_INVALID_HEADER_UUID_TYPE = 11,
+    ERR_INVALID_HEADER_UUID_SIZE = 12,
+    ERR_CREATE_ENTRY_KEY = 13,
+    ERR_INVALID_SIGNATURE = 14,
+    ERR_READ_NEW_FAILED = 15,
+    ERR_WRITE_DISK_NEW_FAILED = 16,
+    ERR_FILEPATH = 17,
+    ERR_FILE_NOT_FOUND = 18,
+    ERR_HEADER_EXCEED_MAX = 19,
+    ERR_UNKNOWN_KEY_TYPE = 20,
+    ERR_EXPIRED = 21,
+    ERR_SERIALNUM_MISMATCH = 22,
+    ERR_OPEN_FILE = 23
 
 class SynoArchiveCtx(ctypes.Structure):
     _fields_ = [
@@ -136,13 +162,17 @@ def extractFileFromArchive(keytype: str,archive: str, destdir: str, paths: list 
 
     return True
 
-print("Synology Archive Extractor v0.9 - K4L0")
+print("Synology Archive Extractor v0.92 - K4L0")
 print("---------------------------------------")
-parser = argparse.ArgumentParser(description='example: "sae.py -k SYSTEM  -a DSM_DS918+_42962.pat -d ."')
-parser.add_argument('-k', '--keytype',type=str, required=True, help='SynoArchive keytype.', choices=['SYSTEM', 'NANO', 'JSON', 'SPK', 'UNK4','SSDB','UNK6','UNK7','DEV','WEDJAT','UNK10','SMALL'])
-parser.add_argument('-a', '--archive',type=str, required=True, help='SynoArchive file path.')
-parser.add_argument('-d', '--destdir',type=str, required=True, help='The directory to which to extract files.')
-args = parser.parse_args()
+if os.geteuid() != 0:
+   print("You are not root permission!") 
+   exit
+else:
+   parser = argparse.ArgumentParser(description='example: "sudo python sae.py -k SYSTEM  -a DSM_DS918+_42962.pat -d ."')
+   parser.add_argument('-k', '--keytype',type=str, required=True, help='SynoArchive keytype.', choices=['SYSTEM', 'NANO', 'JSON', 'SPK', 'SYNOMIBCOLLECTOR','SSDB','AUTOUPDATE','FIRMWARE','DEV','WEDJAT','DSM_SUPPORT_PATCH','SMALL'])
+   parser.add_argument('-a', '--archive',type=str, required=True, help='SynoArchive file path.')
+   parser.add_argument('-d', '--destdir',type=str, required=True, help='The directory to which to extract files.')
+   args = parser.parse_args()
 
-f=extractFileFromArchive(args.keytype, args.archive, args.destdir)
-print(f)
+   f=extractFileFromArchive(args.keytype, args.archive, args.destdir)
+   print(f)
