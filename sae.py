@@ -133,7 +133,7 @@ class SynoArchive(object):
         _synoarchive_free(self.ctx)
 
 
-def extractFileFromArchive(keytype: str,archive: str, destdir: str, paths: list = []) -> bool:
+def extractFileFromArchive(keytype: str, archive: str, destdir: str, paths: list = []) -> bool:
     """
     Args:
         keytype (str)
@@ -165,7 +165,7 @@ def extractFileFromArchive(keytype: str,archive: str, destdir: str, paths: list 
 print("Synology Archive Extractor v1.0 - K4L0")
 print("---------------------------------------")
 if os.geteuid() != 0:
-   print("You are not root permission!") 
+   print("You do not have root permission!") 
    exit
 else:
    parser = argparse.ArgumentParser(description='example: "sudo python sae.py -k SYSTEM  -a DSM_DS918+_42962.pat -d ."')
