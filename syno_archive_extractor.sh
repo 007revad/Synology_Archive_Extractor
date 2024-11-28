@@ -3,7 +3,7 @@
 # syno_archive_extractor.sh by 007revad
 # https://github.com/007revad/Synology_Archive_Extractor
 #----------------------------------------------------------
-# Requires sae.py 0.92 by K4L0
+# Requires sae.py 1.0 by K4L0
 # https://github.com/K4L0dev/Synology_Archive_Extractor
 #----------------------------------------------------------
 # SYSTEM= 0,             # System
@@ -15,7 +15,7 @@
 # AUTOUPDATE= 6,         # Auto Update
 # FIRMWARE= 7,           # Drive Firmware
 # DEV= 8,                # /var/packages/syno_dev_token
-# WEDJAT= 9,             # Wedjat
+# WEDJAT= 9,             # Wedjat  https://xpenology.com/forum/topic/68080-synology-backdoor/
 # DSM_SUPPORT_PATCH= 10, # DSM Support Patch
 # SMALL= 11              # Small Patch
 #----------------------------------------------------------
@@ -41,7 +41,7 @@ if [[ $( whoami ) != "root" ]]; then
 fi
 
 # Check sae.py exists
-if [[ ! -d "${inpath}" ]]; then
+if [[ -f "$pyscript" ]]; then
     # Make sure sae.py script is executable
     if ! chmod a+x "$pyscript"; then
         echo "Failed to set sae.py as executable!"
@@ -157,11 +157,18 @@ for archive in "${inpath}"/*; do
                     continue ;;
             esac
         elif [[ $extension == "spk" ]]; then
-            extract SPK "$archive"
+            if [[ $archive =~ [Ww]edjat.*\.sa\.spk ]]; then
+                # Wedjat-geminilake-1.0.3-00031.sa.spk
+                extract WEDJAT "$archive"
+            else
+                extract SPK "$archive"
+            fi
         elif [[ $extension == "sa" ]]; then
             extract FIRMWARE "$archive"
         elif [[ $extension == "json" ]]; then
             extract JSON "$archive"
+        elif [[ $archive == "syno_dev_token" ]]; then
+            extract DEV "$archive"
         fi
     fi
 done
