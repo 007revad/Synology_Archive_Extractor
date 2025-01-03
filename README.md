@@ -19,3 +19,19 @@ On x86 linux, the required libraries are located in /usr/lib:
   libsynocore.so.7   
   libsynocredentials.so.7   
   libsynocrypto.so.7 
+
+## Using the syno_archive_extractor.sh to simplify things
+
+<p align="leftr"><img src="images/image1.png"></p>
+
+<p align="leftr"><img src="images/image2.png"></p>
+
+<p align="leftr"><img src="images/image3.png"></p>
+
+<p align="leftr"><img src="images/image4.png"></p>
+
+<p align="leftr"><img src="images/image5.png"></p>
+
+<p align="leftr"><img src="images/image6.png"></p>
+
+<p align="leftr"><img src="images/image7.png"></p>
