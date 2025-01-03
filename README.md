@@ -59,7 +59,7 @@ Extracted DSM 7.2.2 small update pat file
 Extracted Synology drive database update
 <p align="leftr"><img src="images/image6.png"></p>
 
-Extracted Synplogy package
+Extracted Synology package
 <p align="leftr"><img src="images/image7.png"></p>
 
 <br>
