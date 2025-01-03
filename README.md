@@ -37,19 +37,19 @@ outpath="/volume1/temp/out"
 pyscript="/volume1/scripts/sae/sae.py"
 ```
 
-Then place the files to be extracted in he in folder
+Then place the files to be extracted in the **in** folder
 <p align="leftr"><img src="images/image1.png"></p>
 
 Run the syno_archive_extractor.sh bash script
 <p align="leftr"><img src="images/image2.png"></p>
 
-The extracted files will be in their own folder in the out folder
+The extracted files will be in their own folder in the **out** folder
 <p align="leftr"><img src="images/image3.png"></p>
 
 Extracted BeeStation pat file
 <p align="leftr"><img src="images/image4.png"></p>
 
-Extracted DSM small update pat file
+Extracted DSM 7.2.2 small update pat file
 <p align="leftr"><img src="images/image5.png"></p>
 
 Extracted Synology drive database update
