@@ -22,7 +22,11 @@ On x86 linux, the required libraries are located in /usr/lib:
 
 <br>
 
-## Using the syno_archive_extractor.sh to simplify things
+## Using the syno_archive_extractor.sh script to simplify things
+
+You can run syno_archive_extractor.sh in 2 ways:
+1. Via SSH as root or sudo
+2. In task scheduler as a user defined script run by root.
 
 Edit the 3 variables near the top of the script to suit your folder locations:
 
@@ -37,7 +41,7 @@ outpath="/volume1/temp/out"
 pyscript="/volume1/scripts/sae/sae.py"
 ```
 
-Then place the files to be extracted in the **in** folder
+Now whenever you want to extract Synology DSM 7 files place the files to be extracted in the **in** folder
 <p align="leftr"><img src="images/image1.png"></p>
 
 Run the syno_archive_extractor.sh bash script
