@@ -27,9 +27,9 @@ libsynocrypto.so.7
 In Windows WSL Ubuntu I needed more than just the above files:
 
 ```
-libcredntials.so.7  <-- renamed libsynocredentials.so.7
+libcredntials.so.7  <-- renamed copy of libsynocredentials.so.7
 libcrypto.so.1.1
-libcrypto.so.7      <-- renamed libsynocrypto.so.7
+libcrypto.so.7      <-- renamed copy of libsynocrypto.so.7
 libicudata.so.64
 libicui18n.so.64
 libicuuc.so.64
@@ -43,10 +43,10 @@ libsynocrypto.so.7
 libtss2-esys.so
 libtss2-esys.so.0
 libcodesign.so
-libcore.so.7        <-- renamed libsynocore.so.7
+libcore.so.7        <-- renamed copy of libsynocore.so.7
 ```
 
-Instead of copyiong and renaming files I could have, and should have, created symlinks.
+Instead of copying and renaming files I could have, and should have, created symlinks.
 
 <br>
 
