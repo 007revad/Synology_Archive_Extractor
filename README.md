@@ -9,16 +9,44 @@ Run it on your own nas, with root privilege.
 
 On x86 linux, the required libraries are located in /usr/lib:
 
-  libcrypto.so.1.1   
-  libicudata.so.64  
-  libicui18n.so.64    
-  libicuuc.so.64   
-  libmsgpackc.so.2  
-  libsodium.so  
-  libsynocodesign.so   
-  libsynocore.so.7   
-  libsynocredentials.so.7   
-  libsynocrypto.so.7 
+```
+libcrypto.so.1.1
+libicudata.so.64
+libicui18n.so.64
+libicuuc.so.64
+libmsgpackc.so.2
+libsodium.so
+libsynocodesign.so
+libsynocore.so.7
+libsynocredentials.so.7
+libsynocrypto.so.7
+```
+
+<br>
+
+In Windows WSL Ubuntu I needed more than just the above files:
+
+```
+libcredntials.so.7  <-- renamed libsynocredentials.so.7
+libcrypto.so.1.1
+libcrypto.so.7      <-- renamed libsynocrypto.so.7
+libicudata.so.64
+libicui18n.so.64
+libicuuc.so.64
+libmsgpackc.so.2
+libsodium.so
+libsynocodesign.so
+libsynocodesign.so.7
+libsynocore.so.7
+libsynocredentials.so.7
+libsynocrypto.so.7
+libtss2-esys.so
+libtss2-esys.so.0
+libcodesign.so
+libcore.so.7        <-- renamed libsynocore.so.7
+```
+
+Instead of copyiong and renaming files I could have, and should have, created symlinks.
 
 <br>
 
