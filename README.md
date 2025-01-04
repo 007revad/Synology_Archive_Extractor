@@ -22,6 +22,28 @@ On x86 linux, the required libraries are located in /usr/lib:
 
 <br>
 
+In Windows WSL Ubuntu I needed more than just the above files:
+
+  libcrypto.so.7   
+  libicudata.so.64   
+  libicui18n.so.64   
+  libicuuc.so.64   
+  libmsgpackc.so.2   
+  libsodium.so   
+  libsynocodesign.so   
+  libsynocodesign.so.7   
+  libsynocore.so.7   
+  libsynocredentials.so.7   
+  libsynocrypto.so.7   
+  libtss2-esys.so   
+  libtss2-esys.so.0   
+  libcodesign.so   
+  libcore.so.7   
+  libcredntials.so.7   
+  libcrypto.so.1.1   
+
+<br>
+
 ## Using the syno_archive_extractor.sh script to simplify things
 
 You can run syno_archive_extractor.sh in 2 ways:
