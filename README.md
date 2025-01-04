@@ -24,6 +24,8 @@ On x86 linux, the required libraries are located in /usr/lib:
 
 In Windows WSL Ubuntu I needed more than just the above files:
 
+  libcredntials.so.7   
+  libcrypto.so.1.1   
   libcrypto.so.7   
   libicudata.so.64   
   libicui18n.so.64   
@@ -39,8 +41,6 @@ In Windows WSL Ubuntu I needed more than just the above files:
   libtss2-esys.so.0   
   libcodesign.so   
   libcore.so.7   
-  libcredntials.so.7   
-  libcrypto.so.1.1   
 
 <br>
 
